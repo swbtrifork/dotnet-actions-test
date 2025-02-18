@@ -80,4 +80,5 @@ jobs:
       - name: Print image name from matrix
         run: |
           echo "${{ matrix.image }}"
+          pwd
           docker build "./${{ matrix.image }}"
