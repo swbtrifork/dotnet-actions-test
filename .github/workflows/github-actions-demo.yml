@@ -42,8 +42,6 @@ jobs:
         # I'm familiar with python so will use it to parse file names
         # be careful if you have spaces into file names
         shell: python
-        env:
-          PROJECT_IMAGE_MAP: '{"energi-danmark": "docker-image-1", "next": "docker-image-2"}'
         run: |
           from os import environ
           import json
@@ -77,9 +75,14 @@ jobs:
         image: ${{ fromJson( needs.get_changed_files.outputs.IMAGES_TO_BUILD ) }}
 
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
       - name: Print image name from matrix
         run: |
-          ls
+          echo ls -la
           echo "Navigating to folder ${{ matrix.image }}"
           cd ${{ matrix.image }}
           docker build .
