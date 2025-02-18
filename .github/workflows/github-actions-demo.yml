@@ -20,22 +20,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Get changed files with predefined action
-        id: changed-files
-        uses: tj-actions/changed-files@v37
-
-      - name: List all changed files
-        run: |
-          echo '# FILES with tj-actions/changed-files' >> "${GITHUB_STEP_SUMMARY}"
-          echo '' >> "${GITHUB_STEP_SUMMARY}"
-          echo '```' >> "${GITHUB_STEP_SUMMARY}"
-
-          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            echo "$file was changed" >> "${GITHUB_STEP_SUMMARY}"
-          done
-
-          echo '```' >> "${GITHUB_STEP_SUMMARY}"
-
   get_manually:
     runs-on: ubuntu-latest
     permissions:
@@ -73,7 +57,7 @@ jobs:
         # be careful if you have spaces into file names
         shell: python
         env:
-          PROJECT_IMAGE_MAP: '{"proj1": "docker-image-1", "proj2": "docker-image-2", "proj3": "docker-image-3"}'
+          PROJECT_IMAGE_MAP: '{"energi-danmark": "docker-image-1", "next": "docker-image-2"}'
         run: |
           from os import environ
           import json
