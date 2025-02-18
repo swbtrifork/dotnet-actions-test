@@ -55,7 +55,7 @@ jobs:
           for file in files:
               # Remove hej.txt from file
               path = file.split("/")[0:3]
-              path = "/".join(path) + "/Dockerfile"
+              path = "/".join(path)
               if(path not in images and path.startswith("src")):
                   images.append(path)
 
@@ -79,6 +79,6 @@ jobs:
     steps:
       - name: Print image name from matrix
         run: |
-          echo "${{ matrix.image }}"
-          pwd
-          docker build "./${{ matrix.image }}"
+          echo "Navigating to folder ${{ matrix.image }}"
+          cd ${{ matrix.image }}
+          docker build .
