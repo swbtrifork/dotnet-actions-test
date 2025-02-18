@@ -23,6 +23,5 @@ var content = await response.Content.ReadAsStringAsync();
 
 producer.Produce(topic, new Message<string, string> { Key = null, Value = content });
 
-
 producer.Flush(TimeSpan.FromSeconds(10));
 // Console.WriteLine($"{numProduced} messages were produced to topic {topic}");

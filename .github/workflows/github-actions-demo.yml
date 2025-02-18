@@ -25,19 +25,11 @@ jobs:
               - src/**
           # Optionally set `files_yaml_from_source_file` to read the YAML from a file. e.g `files_yaml_from_source_file: .github/changed-files.yml`
 
-      - name: Run step if test file(s) change
-        # NOTE: Ensure all outputs are prefixed by the same key used above e.g. `test_(...)` | `doc_(...)` | `src_(...)` when trying to access the `any_changed` output.
-        if: steps.changed-files-yaml.outputs.test_any_changed == 'true'
+      - name: Run step if src file(s) change
+        if: steps.changed-files-yaml.outputs.src_any_changed == 'true'
         env:
           TEST_ALL_CHANGED_FILES: ${{ steps.changed-files-yaml.outputs.test_all_changed_files }}
         run: |
-          echo "One or more test file(s) has changed."
-          echo "List all the files that have changed: $TEST_ALL_CHANGED_FILES"
-
-      - name: Run step if doc file(s) change
-        if: steps.changed-files-yaml.outputs.doc_any_changed == 'true'
-        env:
-          DOC_ALL_CHANGED_FILES: ${{ steps.changed-files-yaml.outputs.doc_all_changed_files }}
-        run: |
-          echo "One or more doc file(s) has changed."
-          echo "List all the files that have changed: $DOC_ALL_CHANGED_FILES"
+          echo "🎉 The following src file(s) have changed:"
+          echo "${{ env.TEST_ALL_CHANGED_FILES }}"
+          echo "🚀 Run your tests here!"
