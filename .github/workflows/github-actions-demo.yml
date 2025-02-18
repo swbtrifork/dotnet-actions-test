@@ -79,6 +79,7 @@ jobs:
     steps:
       - name: Print image name from matrix
         run: |
+          ls
           echo "Navigating to folder ${{ matrix.image }}"
           cd ${{ matrix.image }}
           docker build .
