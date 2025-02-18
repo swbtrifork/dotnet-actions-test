@@ -28,7 +28,7 @@ jobs:
       - name: Run step if src file(s) change
         if: steps.changed-files-yaml.outputs.src_any_changed == 'true'
         env:
-          TEST_ALL_CHANGED_FILES: ${{ steps.changed-files-yaml.outputs.test_all_changed_files }}
+          TEST_ALL_CHANGED_FILES: ${{ steps.changed-files-yaml.outputs.src_all_changed_files }}
         run: |
           echo "🎉 The following src file(s) have changed:"
           echo "${{ env.TEST_ALL_CHANGED_FILES }}"
