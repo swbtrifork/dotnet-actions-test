@@ -25,4 +25,4 @@ producer.Produce(topic, new Message<string, string> { Key = null, Value = conten
 
 producer.Flush(TimeSpan.FromSeconds(10));
 
-Console.WriteLine($"messagesddd were produced to topic {topic}");
+Console.WriteLine($"messagesddd were prssoduced to topic {topic}");
