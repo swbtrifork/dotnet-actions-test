@@ -82,7 +82,6 @@ jobs:
 
       - name: Print image name from matrix
         run: |
-          echo ls -la
           echo "Navigating to folder ${{ matrix.image }}"
           cd ${{ matrix.image }}
           docker build .

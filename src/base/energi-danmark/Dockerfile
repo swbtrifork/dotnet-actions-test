@@ -5,8 +5,9 @@ COPY energi-danmark.csproj ./
 RUN dotnet restore "./energi-danmark.csproj" --runtime linux-musl-x64
 COPY . .
 RUN dotnet publish "energi-danmark.csproj" -c Release -o /app/publish \
-    --runtime linux-musl-x64 \
-    FROM mcr.microsoft.com/dotnet/runtime-deps:9.0-alpine AS final
+    --runtime linux-musl-x64 
+
+FROM mcr.microsoft.com/dotnet/runtime-deps:9.0-alpine AS final
 
 RUN adduser --disabled-password \
     --home /app \
