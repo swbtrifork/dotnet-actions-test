@@ -4,7 +4,7 @@ import json
 
 data = {
     "energi-danmark": "docker-image-1",
-    "next": "docker-image-2"
+    "next": "docker-image-2d"
 }
 
 # split files string into list. Divide by spaces
